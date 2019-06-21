@@ -51,14 +51,12 @@
               if (res.code=='0') {
                 location.href="{:url('index/index')}"
               }else{
-                $("#captcha").attr('src',"{:captcha_src()}")
+                $("#captcha").attr('src',"{:captcha_src()}?"+Math.random())
                 $("#span3").html(res.message)
-                $("#span").css("color","red")
               }
 
         } 
         })
-
   });
       //验证码刷新
     $("#captcha").click(function(){
