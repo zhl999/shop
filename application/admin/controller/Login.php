@@ -8,6 +8,7 @@ use Db;
 
 class Login extends Controller
 {
+
     public function login()
     {
         return $this->fetch();
@@ -24,7 +25,7 @@ class Login extends Controller
 
         }else{
         	$where=['name'=>$name,'pwd'=>$pwd];
-        	$res=DB::table('admin_shop')->where($where)->find();
+        	$res=DB::table('admin')->where($where)->find();
         	if (empty($res)) {
         		$arr=['code'=>'2','status'=>'error','message'=>'账号或密码错误'];
         	}else{
