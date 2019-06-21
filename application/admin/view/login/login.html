@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/login.css" />
+    <script src="__STATIC__/js/jquery.min.js"></script>
+</head>
+<body>
+<div id="div1">
+    <form>
+        <span class="span1">Username</span>
+        <br>
+        <input type="text" name="name" class="ip1" id="name">
+        <br>
+        <span class="span1">Password</span>
+        <br>
+        <input type="password" name="pwd" class="ip1" id="pwd">
+        <br>
+        <span class="span1">Verification Code</span>
+        <br>
+        <div class="div_code">
+        <input type="text" name="my_captcha" class="ip2" id="v_code">
+        <div id="div_code1">
+        <img src="{:captcha_src()}" alt="captcha" class="ip3" id="captcha"  />
+        </div>
+        </div>
+        <span id="span3">&nbsp;</span>
+        <br>
+        <input type="button" id="login" name="" value="立即登录" class="login">
+        <!-- <input type="reset" name="" value="重&nbsp;&nbsp;&nbsp;&nbsp;置" class="reset"> -->
+    </form>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#login").click(function(){
+            var code=$("#v_code").val()
+            console.log(code)
+            var name=$("#name").val()
+            var pwd=$("#pwd").val()
+        $.ajax({
+            url:"{:url('login/loginAction')}",
+            data:{
+              code:code,
+              name:name,
+              pwd:pwd
+            },
+            dataType:'json',
+            success:function(res){
+              console.log(res.code)
+              if (res.code=='0') {
+                location.href="{:url('index/index')}"
+              }else{
+                $("#captcha").attr('src',"{:captcha_src()}")
+                $("#span3").html(res.message)
+                $("#span").css("color","red")
+              }
+
+        } 
+        })
+
+  });
+      //验证码刷新
+    $("#captcha").click(function(){
+      this.src="{:captcha_src()}?"+Math.random
+    });
+});
+</script>
+</body>
+</html>
+
