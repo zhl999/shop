@@ -48,14 +48,15 @@
 	margin-right: 18%;
 }
 .ip2{
-	width: 140px;
+	width: 130px;
 	line-height: 38px;
+	display:inline-block;
 	margin-left: 7%;
 	border:1px solid #CAD2DB;
 	border-radius: 5px;
 }
 .ip3{
-	width: 150px;
+	width: 140px;
 	height: 40px;
 	border:1px solid #CAD2DB;
 	border-radius: 5px;
