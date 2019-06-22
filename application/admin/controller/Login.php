@@ -16,9 +16,9 @@ class Login extends Controller
 
     public function loginAction()
     {
-        $code=Request::get('code');
-        $name=Request::get('name');
-        $pwd=Request::get('pwd');
+        $code=Request::post('code');
+        $name=Request::post('name');
+        $pwd=Request::post('pwd');
         $captcha = new Captcha();
         if (!$captcha->check($code)) {
         	$arr=['code'=>'1','status'=>'error','message'=>'验证码错误'];
